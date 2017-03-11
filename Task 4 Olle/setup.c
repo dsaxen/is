@@ -25,7 +25,7 @@ void setupSystem(void){
   ConfigureAdc();
 
   Scheduler_Add_Task(isPressed, 5, 5);
-  Scheduler_Add_Task(adc, 5, 100);
+  Scheduler_Add_Task(adc, 5, 10);
     Scheduler_Add_Task(blink, 5, 6); //task, delay until function will be run, interval between subsequent runs
 
 }

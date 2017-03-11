@@ -1,6 +1,6 @@
 OBJECTS=timer.o main.o blink.o uart.o setup.o switch.o scheduler.o ADC.o
 
-GCC_DIR =  C:/ti/msp430_gcc/bin
+GCC_DIR =  C:/Programs/TI/GCC430/bin
 SUPPORT_FILE_DIRECTORY = $(GCC_DIR)/../include
 
 DEVICE  = msp430g2553
