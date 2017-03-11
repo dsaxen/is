@@ -2,7 +2,6 @@
 #include"ports.h"
 #include "blink.h"
 #include<msp430g2553.h>
-#include "setup.h"
 
 void setup_timer(void){
 
