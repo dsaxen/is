@@ -1,4 +1,4 @@
-#define SCHEDULER_MAX_TASKS 3
+#define SCHEDULER_MAX_TASKS 5
 
 typedef unsigned char tByte;
 

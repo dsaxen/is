@@ -16,3 +16,4 @@ void setup_timer(void){
 
 	CCR0 = TMRC; //TMRC is defined in ports.h
 }
+
