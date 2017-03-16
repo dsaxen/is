@@ -10,4 +10,3 @@
 
 #define DIVIDER 8
 #define TMRC (DCO_FREQ / DIVIDER / 1000 * TIMER_INTERVAL)
-

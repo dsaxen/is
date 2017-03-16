@@ -1,6 +1,6 @@
 
 #include <msp430g2553.h>
-#include "timer.h"
+//#include "timer.h"
 #include "switch.h"
 #include "uart.h"
 #include "scheduler.h"
@@ -10,23 +10,25 @@
 
 int main() {
 
-	WDTCTL = WDTPW | WDTHOLD;	// Stop watchdog timer // See function above
+	WDTCTL = WDTPW | WDTHOLD;	// Stop watchdog timer
 	P1DIR |= RED_LED;   	//Set LEDs to output direction
   //P1OUT &= ~RED_LED;
 
+	UART_Init();
   setup_button();
-  setup_timer();
-  UART_Init();
+
+	//Scheduler
+	UART_Write("Initializing Scheduler\n");
   Scheduler_Init();
+  Scheduler_Add_Task(isPressed, 50, 20);
+	Scheduler_Add_Task(adc, 100, 100);
+	Scheduler_Add_Task(blink, 100, 200);
+	UART_Write("Starting Scheduler\n");
 
-  Scheduler_Add_Task(isPressed, 0, 5);
-  Scheduler_Add_Task(adc, 18, 18); //you do not need to read the adc that often, once every second is fine.
-  Scheduler_Add_Task(blink, 4, 5);
-
-  Scheduler_Start();
-
+	Scheduler_Start();
 
 	while(1) {
+		UART_Write("DIS\n");
 		Scheduler_Dispatch_Tasks();
 	}
 	return 0;
