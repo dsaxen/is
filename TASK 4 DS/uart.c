@@ -50,7 +50,7 @@ void UART_Init(void)
   // -> N = 1667  0x683
 
   UCA0BR0 = 0x68;
-  UCA0BR1 = 0x0;
+  UCA0BR1 = 0x00;
   UCA0MCTL = UCBRS_6;// Modulation USBR6
 
 
@@ -121,9 +121,9 @@ tByte UART_Read(char *str, tByte max) {
     return count;
 }
 
-  
+
 __attribute__((interrupt(USCIAB0RX_VECTOR)))void USCI0RX_ISR(void)
-{ 
+{
   tByte c;
  //     P1OUT ^= BIT0; //Toggle red led
 
@@ -144,7 +144,7 @@ __attribute__((interrupt(USCIAB0RX_VECTOR)))void USCI0RX_ISR(void)
 __attribute__((interrupt(USCIAB0TX_VECTOR)))void USCI0TX_ISR(void)
 {
   if (UC0IFG & UCA0TXIFG) {
-	
+
     __disable_interrupt();
 		UC0IFG &= ~UCA0TXIFG;
 
@@ -164,4 +164,3 @@ __attribute__((interrupt(USCIAB0TX_VECTOR)))void USCI0TX_ISR(void)
 
    }
 }
-

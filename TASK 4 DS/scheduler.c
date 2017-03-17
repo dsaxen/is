@@ -20,6 +20,20 @@ void Scheduler_Add_Task(void (*pFunction) (void), int DELAY, int PERIOD){
 	SCH_tasks_G[Index].Period = PERIOD;
 	Index++;
 }
+void Scheduler_Faster_Period(int TASK_INDEX, int temperature){ //blink faster
+			char strTemp[15];
+			sprintf(strTemp, "%d", temperature);	//conversion to string
+			UART_Write(strTemp);
+			SCH_tasks_G[TASK_INDEX].Period = 4;
+			SCH_tasks_G[TASK_INDEX].Delay = 4;
+}
+void Scheduler_Slower_Period(int TASK_INDEX, int temperature){//blink slower
+			char strTemp[15];
+			sprintf(strTemp, "%d", temperature);	//conversion to string
+			UART_Write(strTemp);
+			SCH_tasks_G[TASK_INDEX].Period = 14;
+			SCH_tasks_G[TASK_INDEX].Delay = 14;
+}
 
 void Scheduler_Dispatch_Tasks(void){
 	__disable_interrupt();

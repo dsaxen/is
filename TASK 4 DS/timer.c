@@ -3,7 +3,7 @@
 #include "ports.h"
 
 void setup_timer(void){
-  BCSCTL1 = CALBC1_1MHZ;  //set DCO to 1Mhz
+  BCSCTL1 = CALBC1_1MHZ;  //set DCO to 16Mhz
   DCOCTL = CALDCO_1MHZ;
 
   //Set up timer 0
