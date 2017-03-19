@@ -5,11 +5,11 @@
 #include "adc.h"
 
 void blink(void){
-	UART_Write("BLINK\r\n");
 		P1OUT ^= RED_LED; //blink red led
 }
 
 void isPressed(void){
+
   if ((P1IN & BUTTON) == 0){ //if button is pressed
 		for (int i = 0; i < SCHEDULER_MAX_TASKS; i++){
 			Scheduler_Delete_Task(i);

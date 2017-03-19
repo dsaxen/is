@@ -1,2 +1,2 @@
-void adc(void);
-void configAdc(void);
+void read_temp(void);
+void init_ADC(void);

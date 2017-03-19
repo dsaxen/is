@@ -1,1 +1,1 @@
-void setup_timer(void);
+void init_timer(void);
