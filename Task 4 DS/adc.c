@@ -3,15 +3,13 @@
 #include "stdio.h"
 #include "adc.h"
 volatile static int ADC_value = 0;
-volatile static int temperature = 0;
+int temperature = 0;
 
 void init_ADC(void){
-	__delay_cycles(50);
 	UART_Write("ADC INIT\r\n");
-	ADC10CTL1 = INCH_10 + ADC10DIV_3 ;         // Channel 10 is the temperature sensor, ADC10CLK/0
+	ADC10CTL1 = INCH_3 + ADC10DIV_3 ;         // Channel 10 is the temperature sensor, ADC10CLK/0
 	ADC10CTL0 = SREF_1 + ADC10SHT_3 + REFON + ADC10ON;  // Vcc & Vss as reference, Sample and hold for 64 Clock cycles, ADC on, REF off
 	ADC10CTL0 |= ENC + ADC10SC;
-	__delay_cycles(50);
 }
 
 void read_temp(void)
